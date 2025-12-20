@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Mohid Qasim - Graphic Designer, Poster Designer, and Cricketer">
+  <title>Mohid Qasim | Portfolio</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Lightbox CSS (basic) -->
+  <style>
+    /* Reset & Base */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background:#0f172a; color:#e5e7eb; line-height:1.7; }
+
+    a { text-decoration:none; color:inherit; }
+    a:hover { color:#0ea5e9; }
+
+    /* Navbar */
+    nav {
+      position: fixed; top:0; left:0; width:100%; background:#020617;
+      display:flex; justify-content:center; padding:15px 0; z-index:1000;
+      box-shadow:0 5px 15px rgba(0,0,0,0.5);
+    }
+    nav a { margin:0 20px; font-weight:600; color:#94a3b8; transition:all 0.3s ease; }
+    nav a:hover, nav a.active { color:#38bdf8; text-decoration:underline; }
+
+    /* Header / Hero */
+    header {
+      position: relative; padding:120px 20px 60px 20px; text-align:center;
+      background: linear-gradient(135deg,#020617,#1e293b);
+      overflow:hidden;
+    }
+    header::before {
+      content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+      background: url('hero-bg.jpg') center/cover no-repeat; opacity:0.1; z-index:0;
+    }
+    header img { width:220px; border-radius:15px; margin-bottom:20px; border:3px solid #38bdf8; position:relative; z-index:1; }
+    header h1 {
+      font-family:'Montserrat',sans-serif; font-size:3rem;
+      background:linear-gradient(90deg,#38bdf8,#06b6d4); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      position:relative; z-index:1;
+    }
+    header p { margin-top:10px; font-size:1.2rem; color:#94a3b8; position:relative; z-index:1; }
+
+    /* Resume Button */
+    .resume-btn {
+      display:inline-block; margin-top:20px; padding:12px 25px; border:2px solid #38bdf8;
+      border-radius:8px; font-weight:600; color:#38bdf8; transition:all 0.3s ease; position:relative; z-index:1;
+    }
+    .resume-btn:hover { background:#38bdf8; color:#020617; transform:scale(1.05); }
+
+    /* Sections */
+    section { padding:70px 20px; max-width:1100px; margin:auto; opacity:0; transform:translateY(30px); transition:all 0.8s ease; }
+    section.visible { opacity:1; transform:translateY(0); }
+    h2 {
+      text-align:center; font-family:'Montserrat',sans-serif; font-size:2.2rem; margin-bottom:30px;
+      background:linear-gradient(90deg,#38bdf8,#06b6d4); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+
+    /* About Section */
+    .about p { max-width:850px; margin:18px auto; text-align:justify; line-height:1.9; font-size:1.1rem; }
+
+    /* Projects Section / Gallery */
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+    .card {
+      background:#020617; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.5);
+      transition:all 0.4s ease; cursor:pointer;
+    }
+    .card:hover { transform:translateY(-10px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,0.6); }
+    .card img { width:100%; height:auto; border-radius:12px; margin-bottom:15px; border:2px solid #38bdf8; }
+    .card h3 { font-family:'Montserrat',sans-serif; margin-bottom:12px; font-size:1.4rem; color:#f8fafc; }
+    .card p { margin-bottom:10px; font-size:1rem; line-height:1.7; }
+    .card ul { margin-left:20px; line-height:1.8; list-style-type:square; }
+
+    /* Lightbox Modal */
+    .modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
+    .modal img { max-width:90%; max-height:80%; border-radius:12px; }
+    .modal span { position:absolute; top:20px; right:40px; font-size:3rem; color:#fff; cursor:pointer; }
+
+    /* Contact Section */
+    .contact { text-align:center; }
+    .contact a { display:inline-block; margin:12px 15px; padding:10px 18px; border:2px solid #38bdf8; border-radius:8px; font-size:1rem; font-weight:600; transition:all 0.3s ease; }
+    .contact a:hover { background:#38bdf8; color:#020617; transform:scale(1.1); }
+    .contact a i { margin-right:8px; }
+
+    /* Footer */
+    footer { text-align:center; padding:30px; background:#020617; color:#64748b; font-size:0.95rem; }
+
+    /* Responsive */
+    @media (max-width:650px) {
+      header h1 { font-size:2.2rem; }
+      h2 { font-size:1.8rem; }
+      nav a { margin:0 12px; font-size:0.95rem; }
+      .contact a { margin:8px 10px; font-size:0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#about" class="nav-link active">About</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+
+  <!-- Header / Hero -->
+  <header>
+    <img src="myphoto.png" alt="Mohid Qasim">
+    <h1>Mohid Qasim</h1>
+    <p>Graphic Designer | Poster Designer | Cricketer</p>
+    <a href="resume.pdf" class="resume-btn" download><i class="fas fa-download"></i>Download Resume</a>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>I am a passionate and creative individual with a strong interest in graphic design, digital content creation, and visual storytelling. I enjoy working on posters, social media designs, and creative edits that combine clean layouts with a cinematic feel.</p>
+    <p>Alongside design, I am also a cricketer who values discipline, teamwork, and continuous improvement. Sports have helped me build focus, consistency, and a strong work ethic, which I apply in my creative work as well.</p>
+    <p>I am also an avid reader who enjoys classic literature. Reading novels such as <b>Mansfield Park</b>, <b>Emma</b>, <b>A Tale of Two Cities</b>, <b>Oliver Twist</b>, and <b>The Secret Garden</b> has strengthened my imagination, vocabulary, and critical thinking skills.</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>My Work</h2>
+    <div class="projects">
+      <div class="card" onclick="openModal('poster1.png')">
+        <img src="poster1.png" alt="Cricket Poster Series">
+        <h3>Cricket Poster Series</h3>
+        <p>Instagram poster designs based on legendary cricket performances.</p>
+      </div>
+      <div class="card" onclick="openModal('m.png')">
+        <img src="m.png" alt="Cricketer">
+        <h3>Cricketer</h3>
+        <p>I am a cricketer with experience in competitive matches. My role includes batting, bowling, and fielding with strong discipline and team spirit.</p>
+      </div>
+      <div class="card" onclick="openModal('books.png')">
+        <img src="books.png" alt="Book Lover">
+        <h3>Book Lover</h3>
+        <p>A passionate reader with a deep interest in classic literature. Some favorites include:</p>
+        <ul>
+          <li>Mansfield Park</li>
+          <li>Emma</li>
+          <li>A Tale of Two Cities</li>
+          <li>Oliver Twist</li>
+          <li>The Secret Garden</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <span onclick="closeModal(event)">&times;</span>
+    <img id="modal-img" src="" alt="Expanded Project">
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <a href="mailto:bsuaco555@gmail.com"><i class="fas fa-envelope"></i>Email</a>
+    <a href="https://instagram.com/mohid.49" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Mohid Qasim. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Section fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Active nav link
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if(pageYOffset >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+    });
+
+    // Lightbox modal
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    function openModal(src){
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+    function closeModal(e){
+      if(e.target === modal || e.target.tagName === 'SPAN'){
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
